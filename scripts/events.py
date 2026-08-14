@@ -1319,7 +1319,7 @@ def perform_ceremonies(cat):
             _ready = cat.moons >= 12
         else:
             _ready = (
-                cat.experience_level not in ["untrained", "learning"]
+                cat.experience_level not in ["trainee", "beginner"]
                 and cat.moons >= constants.CONFIG["graduation"]["min_graduating_age"]
             ) or cat.moons >= constants.CONFIG["graduation"]["max_apprentice_age"][
                 cat.status.rank
@@ -1331,7 +1331,7 @@ def perform_ceremonies(cat):
             else:
                 if cat.moons == constants.CONFIG["graduation"]["min_graduating_age"]:
                     preparedness = "early"
-                elif cat.experience_level in ["untrained", "learning"]:
+                elif cat.experience_level in ["trainee", "beginner"]:
                     preparedness = "unprepared"
                 else:
                     preparedness = "prepared"
