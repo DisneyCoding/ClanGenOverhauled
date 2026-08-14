@@ -1925,7 +1925,7 @@ def handle_apprentice_EX(cat):
         if cat.not_working() and int(random.random() * 3):
             return
 
-        if cat.experience > cat.experience_levels_range["learning"][1]:
+        if cat.experience > cat.experience_levels_range["beginner"][1]:
             return
 
         if cat.status.rank == CatRank.MEDICINE_APPRENTICE:
