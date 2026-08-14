@@ -113,7 +113,7 @@ class Cat:
     # EX levels and ranges.
     # Ranges are inclusive to both bounds
     experience_levels_range = {
-        "trainee": (1, 30),
+        "trainee": (0, 30),
         "beginner": (31, 60),
         "novice": (61, 90), 
         "prepared": (91, 130),
@@ -401,7 +401,7 @@ class Cat:
         elif self.age == CatAge.SENIOR:
             self.experience = randint(
                 Cat.experience_levels_range["capable"][0],
-                Cat.experience_levels_range["masterful"][1],
+                Cat.experience_levels_range["master"][1],
             )
         else:
             self.experience = 0
@@ -2871,7 +2871,7 @@ class Cat:
                     bonus = randint(-2, 0)
                 elif mediator.experience_level == "high":
                     bonus = randint(1, 3)
-                elif mediator.experience_level == "masterful":
+                elif mediator.experience_level == "master":
                     bonus = randint(3, 4)
                 elif mediator.experience_level == "max":
                     bonus = randint(4, 5)
@@ -3158,7 +3158,7 @@ class Cat:
     def add_experience(self, amount):
         """adds experience, scaled by progress.difficulty_modifier"""
 
-        ceiling = Cat.experience_levels_range["masterful"][1]
+        ceiling = Cat.experience_levels_range["grandmaster"][1]
         scaled = scale_progress(self.experience, ceiling, amount)
         # stochastic rounding so experience still increases on average
         gain = int(scaled)

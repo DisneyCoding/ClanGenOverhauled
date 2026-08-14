@@ -219,6 +219,7 @@ class Pregnancy_Events:
         event_text = text
         severity = random.choices(["minor", "major"], [3, 1], k=1)[0]
         pregnant_cat.get_injured("pregnant", severity=severity)
+        print(f"Pregnancy injury applied to {pregnant_cat.name} with severity {severity}")
         text += choice(Pregnancy_Events.PREGNANT_STRINGS[f"{severity}_severity"])
         text = event_text_adjust(
             Cat,

@@ -1,12 +1,17 @@
 {
     "en": {
-        "untrained": "untrained",
-        "learning": "learning",
+        "trainee": "trainee",
+        "beginner": "beginner",
+        "novice": "novice",
         "prepared": "prepared",
-        "capable": "capable",
+        "competent": "competent",
+        "skilled": "skilled",
         "proficient": "proficient",
+        "advanced": "advanced",
+        "expert": "expert",
         "adept": "adept",
-        "masterful": "masterful",
+        "master": "master",
+        "grandmaster": "grandmaster",
 
         "teaching": "teaching",
         "TEACHER,0": "good at sharing",
