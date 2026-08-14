@@ -757,11 +757,13 @@ class ProfileScreen(Screens):
         else:
             age = i18n.t(f"general.{the_cat.age.value}", count=1)
         # MOONS
-        output += i18n.t("screens.profile.age_label", age=age, count=the_cat.moons)
+        years = round((the_cat.moons / 12), 1)
+        output += i18n.t("screens.profile.age_label", age=age, count=the_cat.moons, years=years)
 
         if the_cat.dead:
             output += "\n"
-            output += i18n.t("general.moons_age_in_death", count=the_cat.dead_for)
+            years = round((the_cat.moons / 12), 1)
+            output += i18n.t("general.moons_age_in_death", count=the_cat.dead_for, years=years)
 
         # NEWLINE ----------
         output += "\n"
@@ -789,6 +791,13 @@ class ProfileScreen(Screens):
             "screens.profile.fur_label",
             length=i18n.t(f"cat.pelts.fur_{the_cat.pelt.length}"),
         )
+        output += "\n"
+        output += "fur texture: " + i18n.t(f"cat.pelts.fur_texture_{the_cat.pelt.fur_texture}")
+        output += "\n"
+        output += "height: " + i18n.t(f"cat.pelts.height_{the_cat.pelt.height}")
+        output += "\n"
+        output += "build: " + i18n.t(f"cat.pelts.build_{the_cat.pelt.build}")
+
         # NEWLINE ----------
 
         # ACCESSORY

@@ -238,6 +238,9 @@ class Pelt:
         senior_sprite: str = None,
         para_adult_sprite: str = None,
         reverse: bool = False,
+        fur_texture: str = None,
+        height: str = None,
+        build: str = None
     ) -> None:
         self.name = name
         self.colour = colour
@@ -411,6 +414,11 @@ class Pelt:
 
         self.reverse = reverse
         self.skin = skin
+        self.fur_texture = fur_texture if fur_texture is not None else choice([
+            "soft", "curly", "rough", "silky", "sleek", "wavy", "sparse", "tangled", "fuzzy", "spiky"
+        ])
+        self.build = build if build is not None else choice(["stocky", "slender", "lithe", "wiry", "muscular", "lanky", "delicate"])
+        self.height = height if height is not None else choice(["petite", "short", "average", "average", "tall", "towering"])
 
     @property
     def accessory(self):

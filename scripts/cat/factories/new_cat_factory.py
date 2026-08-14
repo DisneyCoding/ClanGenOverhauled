@@ -324,7 +324,7 @@ class NewCatFactory(BaseCatFactory, ABC):
         elif age == CatAge.SENIOR:
             return cls.rng.randint(
                 Cat.experience_levels_range["adept"][0],
-                Cat.experience_levels_range["masterful"][1],
+                Cat.experience_levels_range["master"][1],
             )
         else:
             return 0

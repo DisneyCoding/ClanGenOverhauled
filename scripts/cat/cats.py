@@ -113,13 +113,18 @@ class Cat:
     # EX levels and ranges.
     # Ranges are inclusive to both bounds
     experience_levels_range = {
-        "untrained": (0, 0),
-        "learning": (1, 50),
-        "prepared": (51, 110),
-        "capable": (110, 170),
-        "proficient": (171, 240),
-        "adept": (241, 320),
-        "masterful": (321, 321),
+        "trainee": (1, 30),
+        "beginner": (31, 60),
+        "novice": (61, 90), 
+        "prepared": (91, 130),
+        "competent": (131, 170),
+        "skilled": (171, 210),
+        "proficient": (211, 250),
+        "advanced": (251, 290), 
+        "expert": (291, 330),
+        "adept": (331, 370), 
+        "master": (371, 410),
+        "grandmaster": (411, 411)
     }
 
     all_cats: Dict[str, Cat] = {}  # ID: object
@@ -2758,19 +2763,31 @@ class Cat:
         output = ""
 
         # Determine the chance of failure.
-        if mediator.experience_level == "untrained":
-            chance = 15
-        elif mediator.experience_level == "learning":
+        if mediator.experience_level == "trainee":
             # Negative bonus for very low.
             chance = 20
+        elif mediator.experience_level == "beginner":
+            chance = 25
+        elif mediator.experience_level == "novice":
+            chance = 30
         elif mediator.experience_level == "prepared":
             chance = 35
+        elif mediator.experience_level == "competent":
+            chance = 40
+        elif mediator.experience_level == "skilled":
+            chance = 45
         elif mediator.experience_level == "proficient":
             chance = 55
+        elif mediator.experience_level == "advanced":
+            chance = 60
+        elif mediator.experience_level == "expert":
+            chance = 70
         elif mediator.experience_level == "adept":
             chance = 70
-        elif mediator.experience_level == "masterful":
-            chance = 100
+        elif mediator.experience_level == "master":
+            chance = 90
+        elif mediator.experience_level == "grandmaster":
+            chance = 99
         else:
             chance = 40
 
@@ -2816,7 +2833,7 @@ class Cat:
                     lvl_modifier = 1.25
                 elif mediator.experience_level == "adept":
                     lvl_modifier = 1.75
-                elif mediator.experience_level == "masterful":
+                elif mediator.experience_level == "master":
                     lvl_modifier = 2
                 else:
                     lvl_modifier = 1
@@ -3135,7 +3152,7 @@ class Cat:
 
     @experience.setter
     def experience(self, exp: int):
-        exp = min(exp, self.experience_levels_range["masterful"][1])
+        exp = min(exp, self.experience_levels_range["grandmaster"][1])
         self._experience = int(exp)
 
     def add_experience(self, amount):
@@ -3329,6 +3346,9 @@ class Cat:
                 "opacity": self.pelt.opacity,
                 "prevent_fading": self.prevent_fading,
                 "favourite": self.favourite,
+                "fur_texture": self.pelt.fur_texture,
+                "height": self.pelt.height,
+                "build": self.pelt.build
             }
 
     def determine_next_and_previous_cats(
